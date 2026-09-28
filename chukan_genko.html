@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>中間発表 原稿と想定質問</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --paper:#F5F7F6; --sheet:#FFFFFF; --ink:#1C2124; --muted:#5B656C;
+  --line:#D8DEE1; --green:#12995A; --blue:#0A57A3; --bar:#2E2A26;
+  --greenwash:#E8F5EE; --bluewash:#EAF1F9; --warn:#9A5B00; --warnwash:#FFF4E0;
+  --gothic:"Zen Kaku Gothic New","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;
+  --mincho:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho","YuMincho","MS PMincho",serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#121614; --sheet:#1A1F1D; --ink:#E6ECE9; --muted:#9AA6A1;
+    --line:#2E3733; --green:#3CC47F; --blue:#5B9BE0; --bar:#8C847B;
+    --greenwash:#16291F; --bluewash:#172333; --warn:#E0A64A; --warnwash:#2B2214;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121614; --sheet:#1A1F1D; --ink:#E6ECE9; --muted:#9AA6A1;
+  --line:#2E3733; --green:#3CC47F; --blue:#5B9BE0; --bar:#8C847B;
+  --greenwash:#16291F; --bluewash:#172333; --warn:#E0A64A; --warnwash:#2B2214;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--gothic);
+  font-size:16px;line-height:1.8;letter-spacing:.02em}
+.wrap{max-width:44rem;margin:0 auto;padding:0 1.15rem}
+img{max-width:100%}
+
+/* ---- 研究室テンプレートの二本線 ---- */
+.bars{display:grid;grid-template-columns:1fr 1fr;height:14px}
+.bars span:first-child{background:linear-gradient(var(--green) 55%,var(--bar) 55%)}
+.bars span:last-child{background:linear-gradient(var(--blue) 55%,var(--bar) 55%)}
+
+header{padding:2.4rem 0 1.6rem}
+header h1{font-family:var(--mincho);font-weight:700;font-size:clamp(1.7rem,5.4vw,2.35rem);
+  line-height:1.35;margin:0 0 .6rem;letter-spacing:.04em}
+header .sub{color:var(--muted);font-size:.93rem;margin:0}
+header .meta{display:flex;gap:1.4rem;flex-wrap:wrap;margin-top:1.1rem;font-size:.9rem}
+header .meta b{font-size:1.25rem;font-weight:700;color:var(--green);margin-right:.25rem}
+
+/* ---- ナビ ---- */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);
+  border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:.4rem;overflow-x:auto;padding-top:.55rem;padding-bottom:.55rem;
+  scrollbar-width:none}
+nav .wrap::-webkit-scrollbar{display:none}
+nav a{flex:none;text-decoration:none;color:var(--ink);font-size:.86rem;border:1px solid var(--line);
+  background:var(--sheet);border-radius:6px;padding:.28rem .6rem;line-height:1.3}
+nav a.n{min-width:2.1rem;text-align:center;font-weight:700}
+nav a:hover,nav a:focus-visible{border-color:var(--green);color:var(--green);outline:none}
+nav .sep{flex:none;width:1px;height:1.2rem;background:var(--line);margin:0 .2rem}
+nav button{flex:none;margin-left:auto;font:inherit;font-size:.82rem;color:var(--blue);
+  background:none;border:1px solid var(--blue);border-radius:6px;padding:.28rem .6rem;cursor:pointer}
+nav button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+section{padding:2.2rem 0 .6rem}
+h2{font-family:var(--mincho);font-weight:700;font-size:1.45rem;margin:0 0 1rem;line-height:1.4;letter-spacing:.04em}
+h3{font-size:1.02rem;margin:1.6rem 0 .5rem}
+p{margin:.55rem 0}
+
+/* ---- 話の筋 ---- */
+.flow{list-style:none;padding:0;margin:0;counter-reset:f}
+.flow li{position:relative;padding:.45rem 0 .45rem 2.3rem;border-left:2px solid var(--line);margin-left:.6rem}
+.flow li::before{counter-increment:f;content:counter(f);position:absolute;left:-.8rem;top:.5rem;
+  width:1.55rem;height:1.55rem;border-radius:50%;background:var(--sheet);border:2px solid var(--green);
+  color:var(--green);font-weight:700;font-size:.82rem;display:grid;place-items:center;line-height:1}
+.flow li:last-child{border-left-color:transparent}
+
+.note{background:var(--warnwash);border-left:4px solid var(--warn);padding:.8rem 1rem;border-radius:0 6px 6px 0;margin:1.2rem 0}
+.note strong{color:var(--warn)}
+.note ul{margin:.3rem 0 0;padding-left:1.2rem}
+
+/* ---- スライド ---- */
+.slide{background:var(--sheet);border:1px solid var(--line);border-radius:10px;margin:0 0 1.6rem;overflow:hidden}
+.slide-head{display:flex;align-items:baseline;gap:.8rem;padding:1rem 1.2rem .5rem;flex-wrap:wrap}
+.slide-no{font-family:var(--mincho);font-weight:700;font-size:2.1rem;line-height:1;color:var(--green)}
+.slide-title{font-weight:700;font-size:1.1rem;flex:1;min-width:10rem}
+.slide-time{font-size:.82rem;color:var(--muted);white-space:nowrap}
+.script{margin:.3rem 1.2rem 1.1rem;padding:.2rem 0 .2rem 1rem;border-left:3px solid var(--green);
+  font-family:var(--mincho);font-weight:500;font-size:1.13rem;line-height:2}
+.script p{margin:.5rem 0}
+.script .opt{color:var(--muted);font-size:.98rem}
+.script .opt::before{content:"（補足）";font-family:var(--gothic);font-size:.8rem;margin-right:.2rem}
+
+details{border-top:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:.75rem 1.2rem;font-weight:700;font-size:.95rem;
+  display:flex;align-items:center;gap:.6rem}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"";width:.5rem;height:.5rem;border-right:2px solid currentColor;border-bottom:2px solid currentColor;
+  transform:rotate(-45deg);transition:transform .15s ease;flex:none;margin-left:.1rem}
+details[open]>summary::before{transform:rotate(45deg)}
+summary:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
+details.learn>summary{color:var(--blue)}
+details.ask>summary{color:var(--green)}
+.inner{padding:0 1.2rem 1rem}
+.inner dl{margin:0}
+.inner dt{font-weight:700;margin-top:.9rem}
+.inner dd{margin:.2rem 0 0}
+.formula{font-family:var(--mincho);font-size:1.1rem;text-align:center;padding:.5rem;margin:.6rem 0;
+  background:var(--bluewash);border-radius:6px;overflow-x:auto}
+.analogy{background:var(--greenwash);border-radius:6px;padding:.7rem .9rem;margin:.7rem 0}
+.analogy b{color:var(--green)}
+
+/* ---- 想定質問 ---- */
+.qgroup h3{margin-top:2rem;font-size:1.05rem;border-bottom:2px solid var(--ink);padding-bottom:.3rem}
+.qa{border:1px solid var(--line);border-radius:8px;background:var(--sheet);margin:.6rem 0}
+.qa>summary{font-weight:500;color:var(--ink);padding:.8rem 1rem;line-height:1.55}
+.qa>summary .tag{flex:none;font-size:.7rem;font-weight:700;color:var(--sheet);background:var(--warn);
+  border-radius:4px;padding:.12rem .4rem;margin-left:auto}
+.qa .ans{padding:0 1rem .9rem 2.2rem}
+.qa .short{font-weight:700;margin:0 0 .3rem}
+.qa .more{color:var(--muted);margin:0}
+.inner .qa .ans{padding-left:1.8rem}
+
+/* ---- 数字表 ---- */
+.table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{padding:.55rem .8rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--bluewash);font-weight:700;white-space:nowrap}
+td.v{font-weight:700;white-space:nowrap;color:var(--blue)}
+tr:last-child td{border-bottom:none}
+
+.tips{list-style:none;padding:0;margin:0}
+.tips li{padding:.7rem 0;border-bottom:1px solid var(--line)}
+.tips li b{display:block}
+
+footer{padding:2.5rem 0 3rem;color:var(--muted);font-size:.82rem}
+
+@media (max-width:520px){
+  body{font-size:15.5px}
+  .script{font-size:1.06rem;margin-left:.9rem;margin-right:.9rem}
+  .slide-head,summary,.inner{padding-left:.9rem;padding-right:.9rem}
+  .qa .ans{padding-left:1.2rem}
+}
+@media (prefers-reduced-motion:reduce){summary::before{transition:none}}
+@media print{
+  nav,#toggle{display:none}
+  body{background:#fff}
+  .slide,.qa{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="bars" aria-hidden="true"><span></span><span></span></div>
+
+<header class="wrap">
+  <h1>中間発表<br>原稿と想定質問</h1>
+  <p class="sub">大規模マイクロストリップアレーアンテナの効率的な解析方法の開発　／　木村勇惺</p>
+  <div class="meta">
+    <span><b>8</b>枚</span>
+    <span><b>約7</b>分</span>
+    <span><b>37</b>問の想定質問</span>
+  </div>
+</header>
+
+<nav aria-label="目次">
+  <div class="wrap">
+    <a href="#story">筋</a>
+    <span class="sep"></span>
+    <a class="n" href="#s1">1</a><a class="n" href="#s2">2</a><a class="n" href="#s3">3</a><a class="n" href="#s4">4</a>
+    <a class="n" href="#s5">5</a><a class="n" href="#s6">6</a><a class="n" href="#s7">7</a><a class="n" href="#s8">8</a>
+    <span class="sep"></span>
+    <a href="#qa">質問</a><a href="#numbers">数字</a><a href="#tips">答え方</a>
+    <button id="toggle" type="button">全部開く</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ============================ 話の筋 ============================ -->
+<section id="story">
+  <h2>まず、話の筋を頭に入れる</h2>
+  <p>この発表は、次の6つがつながった一本の話です。どこを聞かれても、この流れのどこにいるかを意識すれば答えがぶれません。</p>
+  <ol class="flow">
+    <li>最終的に作りたいのは<strong>8×8素子のアレーアンテナ</strong></li>
+    <li>その素子になる<strong>パッチアンテナの寸法を直す必要</strong>があった</li>
+    <li>直すには何度も計算したいが、<strong>1回17時間</strong>かかる</li>
+    <li>計算を途中で止め、続きを数式で予測する<strong>ARMA法</strong>を使った</li>
+    <li>そのままでは失敗したので、<strong>データを間引く</strong>工夫をした</li>
+    <li>結果は直接計算と一致し、<strong>6倍速く</strong>なった</li>
+  </ol>
+
+  <div class="note">
+    <strong>発表前に直しておくこと</strong>
+    <ul>
+      <li>6枚目と7枚目のキャプションがどちらも「図3」になっています。<b>7枚目は「図4」</b>に直してください。</li>
+      <li>比誘電率は <b>ε<sub>r</sub></b> と r を下付きにするのが正式です（t₁、d<sub>x</sub> も同様）。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================ スライド1 ============================ -->
+<section id="s1">
+  <div class="slide">
+    <div class="slide-head"><span class="slide-no">1</span><span class="slide-title">タイトル</span><span class="slide-time">15秒</span></div>
+    <div class="script">
+      <p>それでは発表を始めます。有馬研究室の木村です。</p>
+      <p>「大規模マイクロストリップアレーアンテナの効率的な解析方法の開発」について発表します。よろしくお願いします。</p>
+    </div>
+    <details class="learn"><summary>しくみを理解する</summary><div class="inner">
+      <p>タイトルを一言で言い直すと「<b>たくさん並べたアンテナをFDTD法で計算すると時間がかかりすぎるので、それを速くする方法を作る</b>」です。</p>
+      <p>「マイクロストリップアンテナ」は、基板の上に薄い金属の板を貼っただけの平らなアンテナのこと。パッチアンテナとも呼び、略して MSA と書きます。</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- ============================ スライド2 ============================ -->
+<section id="s2">
+  <div class="slide">
+    <div class="slide-head"><span class="slide-no">2</span><span class="slide-title">1. 研究背景と目的</span><span class="slide-time">70秒</span></div>
+    <div class="script">
+      <p>まず研究背景です。第5世代移動通信システム、いわゆる5Gでは、28 GHz帯と39 GHz帯という高い周波数帯が割り当てられており、これらを使った大規模MIMOシステムの実現が期待されています。</p>
+      <p>その構成要素として、28 GHz帯と39 GHz帯の両方で動作する2周波共用のパッチアンテナを素子とし、それを多数並べた大規模アレーアンテナの検討が進められています。</p>
+      <p>パッチアンテナは、右の図のように、地導体板の上に誘電体基板を置き、その上に金属のパッチを貼った構造のアンテナです。裏から給電すると、パッチから電波が放射されます。薄くて並べやすいため、下の図のように多数並べたアレーアンテナの素子によく使われます。本研究で扱う素子の実際の構造は、次のスライドで説明します。</p>
+      <p>アレーアンテナの開発にはシミュレーションが有用ですが、代表的な手法であるFDTD法で大規模なアレーを解析しようとすると、計算時間が膨大になるという課題があります。</p>
+      <p>そこで本研究では、FDTD法による解析を効率化する手法の開発を目的としています。</p>
+    </div>
+    <details class="learn"><summary>しくみを理解する</summary><div class="inner"><dl>
+      <dt>28 GHz帯・39 GHz帯</dt>
+      <dd>携帯電話の電波よりずっと高い周波数。広い帯域を使えるので大容量の通信ができる反面、電波が弱まりやすく遮られやすい。</dd>
+      <dt>大規模MIMO</dt>
+      <dd>多数のアンテナを使って、複数の鋭いビームを同時に作り、多くの端末と同時に通信する技術。そのためにアンテナをたくさん並べる（＝アレー）必要がある。</dd>
+      <dt>パッチアンテナ（右の図）</dt>
+      <dd>3つの層でできています。下から<b>地導体板</b>（裏面全体に貼った金属）、<b>誘電体基板</b>（絶縁体の板）、<b>金属パッチ</b>（電波を出す部分）。裏から給電すると、パッチと地導体板の間に電界がたまり、パッチの縁から電波が放射されます。平らで薄く、基板に金属を貼るだけで作れるので安く、平面にたくさん並べやすい。これがアレーの素子に向いている理由です。</dd>
+      <dd style="margin-top:.5rem">右の図は<b>一般的な</b>パッチアンテナの説明図です。本研究の素子は給電がLプローブで、放射素子もL字形とリング形の組み合わせなので形が違います。実物は3枚目の図1です。</dd>
+      <dt>2周波共用</dt>
+      <dd>1つの素子が28 GHzと39 GHzの両方で動くこと。別々に並べるより場所を取らない。</dd>
+      <dt>FDTD法</dt>
+      <dd>空間を小さな立方体（セル）に区切り、電界と磁界を「時間を少しずつ進めながら」計算していく方法。パルスを1回入れるだけで広い周波数の特性がまとめて分かるのが強み。ただし「セル数 × 時間ステップ数」だけ計算するので重い。</dd>
+    </dl></div></details>
+    <details class="ask"><summary>このスライドで聞かれやすいこと</summary><div class="inner">
+      <p>→ 想定質問の <a href="#q1">Q1 なぜFDTD法か</a>、<a href="#q3">Q3 素子1個の話なのはなぜか</a>、<a href="#q37">Q37 パッチアンテナとは</a></p>
+    </div></details>
+  </div>
+</section>
+
+<!-- ============================ スライド3 ============================ -->
+<section id="s3">
+  <div class="slide">
+    <div class="slide-head"><span class="slide-no">3</span><span class="slide-title">2-1. パッチアンテナの設計</span><span class="slide-time">50秒</span></div>
+    <div class="script">
+      <p>次に課題について説明します。まず、アレーの素子となるパッチアンテナの設計です。図1がその構造です。</p>
+      <p>左の上面図のように、28 GHz帯で動作する2つのL字形素子と、39 GHz帯で動作するリング形素子、そして給電用のLプローブを、すべて同じ面に配置した一層構造になっています。右の断面図のように、基板の厚さは1.0 mm、比誘電率は2.6です。</p>
+      <p class="opt">この素子は先行研究から引き継いだものですが、Lプローブの位置の寸法が基板からはみ出す値になっていたため、寸法を見直して再設計する必要がありました。</p>
+    </div>
+    <details class="learn"><summary>しくみを理解する</summary><div class="inner">
+      <p><b>最後の補足の一文は言うことをおすすめします。</b>スライドには文字がないので、これを言わないと次のスライドの「寸法を変えて反復解析が必要」の理由が伝わりません。</p>
+      <dl>
+        <dt>なぜ L字形が28 GHz、リングが39 GHz なのか</dt>
+        <dd>アンテナは<b>長いほど低い周波数で共振</b>します。L字形素子は長さ b₁ = 2.45 mm と長いので低い28 GHz、リングは b₂ = 1.92 mm と短いので高い39 GHz を受け持ちます。</dd>
+        <dt>Lプローブ</dt>
+        <dd>放射素子に直接触れずに、すき間（s₁、s₂）を介して電力を送り込む給電線。L字の形をしているのでこう呼ぶ。</dd>
+        <dt>一層構造の利点</dt>
+        <dd>素子とプローブを同じ面に置けるので、基板を重ねる必要がなく、作りやすく安い。</dd>
+        <dt>引き継いだ設計の問題</dt>
+        <dd>プローブ位置の寸法 p<sub>t</sub> が 4.1 mm。素子の間隔は 7.0 mm なので、その半分の 3.5 mm を超えて基板の外に出てしまう。他のプローブ寸法（0.3 mm 前後）と比べて1桁大きいので <b>0.41 mm の誤記</b>と判断して修正した。あわせて、共振周波数を 28 / 39 GHz に合わせるため b₁、b₂、a₂、p₂ も調整した。</dd>
+      </dl>
+    </div></details>
+    <details class="ask"><summary>このスライドで聞かれやすいこと</summary><div class="inner">
+      <p>→ <a href="#q24">Q24 何が問題だったか</a>、<a href="#q25">Q25 寸法はどう決めたか</a>、<a href="#q26">Q26 ε<sub>r</sub>とは</a></p>
+    </div></details>
+  </div>
+</section>
+
+<!-- ============================ スライド4 ============================ -->
+<section id="s4">
+  <div class="slide">
+    <div class="slide-head"><span class="slide-no">4</span><span class="slide-title">2-2. 解析時間</span><span class="slide-time">60秒</span></div>
+    <div class="script">
+      <p>次に解析時間の課題です。設計では、寸法を少しずつ変えながら何度も解析を繰り返す必要があります。</p>
+      <p>図2は、FDTD解析で得られた給電点の電圧と電流の時間変化です。上の電圧のようにパルス状の信号を入力しますが、この入力は約770ステップで終わります。しかし下の電流を見ると、入力が終わった後も長く振動が続いています。これはアンテナが共振しているためです。</p>
+      <p>この振動が十分小さくなるまで計算するには12万ステップが必要で、1条件あたり約17時間かかります。1日に1条件しか評価できないため、寸法を繰り返し調整する設計には現実的ではありません。</p>
+      <p>そこで、計算を途中で打ち切り、その後の波形を信号処理によって予測するARMA法を適用しました。</p>
+    </div>
+    <details class="learn"><summary>しくみを理解する</summary><div class="inner">
+      <div class="analogy"><b>鐘のたとえ</b>　アンテナは共振器なので、パルスを入れると鐘を叩いたように長く鳴り続けます。叩くのは一瞬（770ステップ）でも、音が消えるまでには時間がかかる（12万ステップ）。</div>
+      <dl>
+        <dt>なぜ最後まで計算しないといけないのか</dt>
+        <dd>反射特性は、この電流波形をフーリエ変換して求めます。まだ鳴っている波形を途中でブツッと切ると、<b>切った跡が偽の波打ちとして周波数特性に現れる</b>（打ち切り誤差）。7枚目の灰色の線がまさにそれです。</dd>
+        <dt>ステップとは</dt>
+        <dd>時間を Δt = 19.26 fs（フェムト秒、10<sup>−15</sup> 秒）ずつ進める1回分の計算。12万ステップでも実際の時間にするとわずか 2.3 ns。1ステップの計算に約0.5秒かかるので、12万ステップで約17時間。</dd>
+        <dt>図2の赤い点線</dt>
+        <dd>振幅がどれくらいの速さで小さくなるかを表す指数関数。τ ≈ 1.3万ステップで振幅が約37%（1/e）になる。2万ステップの時点でもまだピークの約1/10が残っている。</dd>
+      </dl>
+    </div></details>
+    <details class="ask"><summary>このスライドで聞かれやすいこと</summary><div class="inner">
+      <p>→ <a href="#q18">Q18 6倍の根拠</a>、<a href="#q33">Q33 打ち切り誤差とは</a></p>
+    </div></details>
+  </div>
+</section>
+
+<!-- ============================ スライド5 ============================ -->
+<section id="s5">
+  <div class="slide">
+    <div class="slide-head"><span class="slide-no">5</span><span class="slide-title">3. ARMA法による高速化</span><span class="slide-time">80秒</span></div>
+    <div class="script">
+      <p>ここからARMA法について説明します。入力パルスが終わった後は、外から何も入力されない自由振動の状態になります。このとき給電点の電流は、減衰しながら振動する波をいくつか足し合わせた形で、厳密に表すことができます。それが式(1)です。</p>
+      <p>ここで z<sub>k</sub> を極、A<sub>k</sub> を留数と呼びます。極は、1ステップ進むごとに振幅がどれだけ小さくなり、位相がどれだけ回るかを表す複素数で、周波数と減衰の速さの情報を持っています。留数は、その成分の大きさと初期位相です。</p>
+      <p>つまり、長い波形そのものがなくても、極と留数という少数の値さえ分かれば、その先の波形を計算できます。極の抽出には行列束法という手法を用いました。</p>
+      <p>さらに、式(1)の形の信号は、フーリエ変換の無限和を等比級数として解析的に計算できます。それが式(2)です。これにより、長い波形を作ってフーリエ変換する必要がなく、反射特性を直接求めることができます。</p>
+    </div>
+    <details class="learn" open><summary>しくみを理解する（一番大事なスライド）</summary><div class="inner">
+      <div class="analogy"><b>考え方</b>　鐘は叩いた直後こそ複雑な音がしますが、しばらくすると「決まった高さの音が、それぞれ小さくなりながら混ざっている」だけになります。少し聞けば、その後どう小さくなっていくかは予想できる。これをアンテナの電流でやるのがARMA法です。</div>
+
+      <dl>
+        <dt>⓪ i[n] とは</dt>
+        <dd>FDTDで記録した給電点電流の、<b>n ステップ目の値</b>。FDTDは時間を Δt ずつ進めて計算するので、電流は i[0], i[1], i[2], … というとびとびの数字の列で得られます。i[n] は i(t) を t = nΔt で取り出したもので、VI.dat の4列目そのものです。</dd>
+
+        <dt>① なぜ「厳密に」足し算で書けるのか</dt>
+        <dd>FDTDの計算式は、足し算と定数倍だけでできていて（<b>線形</b>）、時間によって式が変わりません（<b>時不変</b>）。この種の系に入力がないとき、応答は必ず「それぞれ一定の割合で縮みながら回る成分」の足し算になります。数学的に保証されていて、近似ではありません。</dd>
+
+        <dt>② 極 z<sub>k</sub> とは ── 減衰振動は「等比数列」</dt>
+        <dd>減衰振動 e<sup>−t/τ</sup>cos(2πft) の片方の成分 e<sup>(−1/τ + j2πf)t</sup> に t = nΔt を入れると
+          <div class="formula">e<sup>(−1/τ + j2πf)nΔt</sup> ＝ ( e<sup>(−1/τ + j2πf)Δt</sup> )<sup>n</sup> ＝ z<sup>n</sup></div>
+          つまり<b>毎ステップ同じ数 z をかけていく等比数列</b>です（i[n+1] = z · i[n]）。この z が極。
+          1ステップ進むごとに、波には「振幅が少し小さくなる」と「位相が少し進む」が同時に起きます。<b>縮める＋回すを一度にやる操作は、複素数を1個かけることと同じ</b>です。今回の22.3 GHzの極では |z| = 0.99992、arg z = 0.0027 rad。
+          <div class="formula">|z<sub>k</sub>| → 1ステップの減衰　　arg z<sub>k</sub> → 周波数</div>
+          |z| が1に近いほど長く鳴り続け、角度が大きいほど高い周波数です。</dd>
+
+        <dt>③ 留数 A<sub>k</sub> とは</dt>
+        <dd>その成分がどれくらい大きく、どのタイミングから始まっているか（振幅と初期位相）。
+          <div class="analogy" style="margin-top:.5rem"><b>鐘でいえば</b>　極＝鐘そのものの性質（何Hzで鳴り、何秒で消えるか）。留数＝どれだけ強く、どこを叩いたか。アンテナでは、極は構造で決まり、留数は給電の仕方で決まります。</div></dd>
+
+        <dt>④ なぜ「ARMA」と呼ぶのか</dt>
+        <dd>極を根にもつ多項式を分母とする信号のモデルを、信号処理では <b>ARMAモデル</b>（自己回帰移動平均モデル）と呼びます。つまり「極を求めること」＝「ARMAモデルを求めること」。行列束法は、その極を求める具体的な手順の名前です。</dd>
+
+        <dt>⑤ 行列束法（Matrix Pencil 法）の手順</dt>
+        <dd>
+          <b>成分が1つなら</b> z = i[n+1] / i[n] と割り算するだけで求まります。成分が2つ以上あると割り算では出ないので、次の手順を使います。<br>
+          <b>手順1</b>　電流の値を1ステップずつずらして並べた表（ハンケル行列）を作る。<br>
+          <b>手順2</b>　特異値分解で、本物の成分とノイズの成分を分け、ノイズを捨てる。<br>
+          <b>手順3</b>　「1ステップずらした表」と「元の表」の関係を固有値問題として解く。1ステップ進む＝極をかける、なので<b>固有値がそのまま極</b>になる。<br>
+          手順2があるのでノイズに強く、同じデータで単純な最小二乗法と比べると予測の誤差が 0.22 → 0.0082 と約27倍よくなりました。
+          <div class="analogy" style="margin-top:.6rem"><b>手で確かめられる例</b>　i[n] = 0.9<sup>n</sup> + 0.5<sup>n</sup>（2, 1.4, 1.06, 0.854, …）から、1ステップずらした2つの表 Y<sub>0</sub>、Y<sub>1</sub> を作り、Y<sub>0</sub> を Y<sub>1</sub> に変換する行列の固有値を計算すると、ちょうど 0.9 と 0.5 が出てきます。この数列は漸化式 i[n] = 1.4 i[n−1] − 0.45 i[n−2] を満たし、その特性方程式 z² − 1.4z + 0.45 = 0 の解も 0.9 と 0.5。<b>ARモデルの特性方程式の根＝極</b>になっています。</div></dd>
+
+        <dt>⑥ 式(2)は何をしているか ── なぜ等比「級数」になるのか</dt>
+        <dd>反射特性を出すには電流をフーリエ変換します。1つの成分 A z<sup>n</sup> を入れると
+          <div class="formula">Σ A z<sup>n</sup> e<sup>−jωnΔt</sup> ＝ A Σ ( z e<sup>−jωΔt</sup> )<sup>n</sup></div>
+          括弧の中 r = z e<sup>−jωΔt</sup> は n によらない定数なので、<b>公比 r の等比級数そのもの</b>。高校で習う無限等比級数の和の公式がそのまま使えます。打ち切り点 n<sub>s</sub> から先を足すなら
+          <div class="formula">Σ<sub>n≥n<sub>s</sub></sub> r<sup>n</sup> ＝ r<sup>n<sub>s</sub></sup> / (1 − r)</div>
+          これが式(2)です。収束条件 |r| &lt; 1 は、|e<sup>−jωΔt</sup>| = 1 なので |r| = |z| &lt; 1、つまり<b>「振動が減衰している」という物理的な事実が、無限和が有限になることを保証</b>しています。だから長い波形を作ってFFTする必要がなく、好きな周波数で直接計算できます。</dd>
+
+        <dt>⑦ 電圧は予測しなくていいのか</dt>
+        <dd>給電がハード源（理想電圧源）なので、パルスが終わった後は電圧がぴったり0になります。予測が必要なのは電流だけです。</dd>
+      </dl>
+    </div></details>
+    <details class="ask"><summary>このスライドで聞かれやすいこと</summary><div class="inner">
+      <p>→ <a href="#q2">Q2 自分で考えた手法か</a>、<a href="#q4">Q4 ARMAの略</a>、<a href="#q5">Q5 なぜ厳密か</a>、<a href="#q7">Q7 なぜ行列束法か</a>、<a href="#q13">Q13 式(2)の利点</a>、<a href="#q35">Q35 i[n]と等比級数</a></p>
+    </div></details>
+  </div>
+</section>
+
+<!-- ============================ スライド6 ============================ -->
+<section id="s6">
+  <div class="slide">
+    <div class="slide-head"><span class="slide-no">6</span><span class="slide-title">3-2. デシメーション</span><span class="slide-time">60秒</span></div>
+    <div class="script">
+      <p>ただし、FDTDの出力にこの手法をそのまま適用すると、うまくいきませんでした。</p>
+      <p>FDTDの時間刻みは、計算の安定条件であるクーラン条件で決まり、非常に細かくなります。今回の場合、22 GHzの振動1周期の中に約2360点ものデータがあります。</p>
+      <p>図3の左は、そのまま求めた極を複素平面上に表したものです。極の角度は1ステップあたりの位相の進みに対応しますが、1ステップではほとんど位相が進まないため、すべての極がz = 1の近くに密集してしまいます。この状態では極を区別できず、計算が破綻しました。</p>
+      <p>そこで、50ステップに1点だけデータを取り出す間引きを行いました。すると右の図のように極が分離し、正しく求められるようになりました。</p>
+    </div>
+    <details class="learn"><summary>しくみを理解する</summary><div class="inner"><dl>
+      <dt>クーラン条件</dt>
+      <dd>計算が発散しないためには、<b>1ステップの間に電磁波がセル1つ分より遠くへ進んではいけない</b>。セルが 0.01 mm と非常に小さいので、Δt も 19.26 fs と非常に小さくなる。</dd>
+      <dt>なぜ極が密集するのか</dt>
+      <dd>極の角度は「1ステップでどれだけ位相が進むか」でした。22 GHz の1周期に2360点あると、1ステップで進むのは 2π ÷ 2360 ≈ 0.0027 rad（約0.15°）だけ。22.3 GHz と 29.8 GHz という7.5 GHzも離れた共振でさえ、角度の差はたった 0.0009 rad。これでは数値計算で区別できません。</dd>
+      <dt>間引くとどうなるか</dt>
+      <dd>50点に1点だけ使うと、1周期あたり約30点。1ステップの角度が50倍になるので、極どうしの角度差も 0.045 rad と50倍に広がります。信号処理では1周期10〜30点が扱いやすい目安です。</dd>
+      <dt>間引いて情報がなくならないのか</dt>
+      <dd>間引き後に表せる最高周波数（ナイキスト周波数）は 519 GHz。見たいのは 45 GHz 以下なので十分余裕があります。また間引く前にローパスフィルタをかけて、高い周波数の成分が低い周波数に化けて混ざる（折り返し）のを防いでいます。</dd>
+      <dt>図3の灰色の極は何か</dt>
+      <dd>100 GHz 以上の成分。見たい帯域の外の成分を表すための数学的な極で、物理的な共振としては扱いません。</dd>
+    </dl></div></details>
+    <details class="ask"><summary>このスライドで聞かれやすいこと</summary><div class="inner">
+      <p>→ <a href="#q10">Q10 情報が失われないか</a>、<a href="#q11">Q11 なぜ50か</a>、<a href="#q14"><b>Q14 極の周波数と共振周波数が違う</b></a>（必ず準備）、<a href="#q15">Q15 灰色の極</a></p>
+    </div></details>
+  </div>
+</section>
+
+<!-- ============================ スライド7 ============================ -->
+<section id="s7">
+  <div class="slide">
+    <div class="slide-head"><span class="slide-no">7</span><span class="slide-title">4. 解析結果</span><span class="slide-time">70秒</span></div>
+    <div class="script">
+      <p>解析結果です。図4は、2万ステップのデータにARMA法を適用した結果を赤の破線、12万ステップまで直接計算した結果を黒の実線で示しています。灰色の線は、2万ステップのデータをそのままフーリエ変換した結果です。</p>
+      <p>灰色の線は、計算を途中で打ち切った影響で細かい波打ちが生じ、共振の谷が浅く出ています。一方、ARMA法の結果は直接計算とほぼ完全に重なっています。</p>
+      <p>表1のとおり、共振周波数は 28.129 GHz と 38.948 GHz で一致し、反射量が −10 dB 以下となる帯域も一致しました。全体の誤差はRMSで 0.134 dB です。計算時間は約17時間から約2.8時間となり、6倍の高速化を達成しました。</p>
+      <p>また設計したアンテナは、比帯域幅がそれぞれ 13.9 % と 9.9 % となり、アレーの素子として使えることを確認しました。</p>
+    </div>
+    <details class="learn"><summary>しくみを理解する</summary><div class="inner"><dl>
+      <dt>反射量 S11</dt>
+      <dd>アンテナに送り込んだ電力のうち、入らずに戻ってくる割合。<b>小さいほど良い</b>（よく電力が入っている）。</dd>
+      <dt>dB の読み方</dt>
+      <dd>−10 dB＝反射10%（90%が入る）、−20 dB＝反射1%。谷が深いほど、その周波数でよく動いている。</dd>
+      <dt>−10 dB 帯域と比帯域幅</dt>
+      <dd>反射が10%以下の周波数の範囲＝アンテナとして使える範囲。比帯域幅はそれを中心周波数で割ったもの。低域 3.89 ÷ 27.9 ≈ 13.9 %、高域 3.89 ÷ 39.2 ≈ 9.9 %。</dd>
+      <dt>RMS誤差 0.134 dB</dt>
+      <dd>25〜45 GHz の全体で、平均的に 0.134 dB しかずれていないという意味。</dd>
+      <dt>自己検証 0.0336</dt>
+      <dd>手元の2万ステップのデータの後ろ1/3を隠して予測させ、答え合わせしたときの誤差（3.4%）。直接計算をしなくても、毎回信頼性をチェックできる。0.05以下を合格の目安にしている。</dd>
+    </dl></div></details>
+    <details class="ask"><summary>このスライドで聞かれやすいこと</summary><div class="inner">
+      <p>→ <a href="#q17">Q17 もっと減らせないか</a>、<a href="#q19">Q19 直接計算は正しいか</a>、<a href="#q20">Q20 0.134 dBで十分か</a>、<a href="#q22"><b>Q22 帯域は目標に届いているか</b></a>、<a href="#q36">Q36 帯域を広げるには</a></p>
+    </div></details>
+  </div>
+</section>
+
+<!-- ============================ スライド8 ============================ -->
+<section id="s8">
+  <div class="slide">
+    <div class="slide-head"><span class="slide-no">8</span><span class="slide-title">5. 今後の予定 ／ 6. 参考文献</span><span class="slide-time">25秒</span></div>
+    <div class="script">
+      <p>今後の予定です。設計した素子アンテナを8×8に並べたアレーアンテナを構成し、FDTD法で解析します。アレーでは解析領域がさらに大きくなるため、本手法による高速化がより有効になると考えています。</p>
+      <p>以上で発表を終わります。ありがとうございました。</p>
+    </div>
+    <details class="learn"><summary>しくみを理解する</summary><div class="inner">
+      <p>8×8アレーは素子間隔 7 mm × 8 で約 56 mm 角。今のセルサイズ 0.01 mm のままだとセル数が今の約30倍（数十億セル）になり、今の計算機では現実的ではありません。質問されたら「セルサイズの見直しも必要」と答えられるようにしておきましょう（Q27）。</p>
+    </div></details>
+    <details class="ask"><summary>このスライドで聞かれやすいこと</summary><div class="inner">
+      <p>→ <a href="#q27">Q27 8×8は計算できるか</a>、<a href="#q28">Q28 アレーでもARMAは使えるか</a></p>
+    </div></details>
+  </div>
+</section>
+
+<!-- ============================ 想定質問 ============================ -->
+<section id="qa">
+  <h2>想定質問と答え方</h2>
+  <p>質問を読んで、まず自分で答えてから開いて確かめてください。答えは<b>一言目（太字）を先に言い、そのあと補足</b>するのが基本です。印のついたものは特に聞かれやすい質問です。</p>
+
+  <div class="qgroup">
+    <h3>研究の位置づけ</h3>
+    <details class="qa" id="q1"><summary>Q1　なぜFDTD法を使うのか（先行研究はHFSSでは？）<span class="tag">頻出</span></summary><div class="ans">
+      <p class="short">1回の計算で、広い周波数帯の特性がまとめて得られるからです。</p>
+      <p class="more">パルスで励振すると、その中に含まれるすべての周波数の応答が1回で求まります。HFSSのような周波数領域の解析は、周波数ごとに計算します。また、本研究室ではFDTD法の大規模モデルへの適用を研究しています。</p></div></details>
+    <details class="qa" id="q2"><summary>Q2　ARMA法は自分で考えた手法か<span class="tag">頻出</span></summary><div class="ans">
+      <p class="short">いいえ、手法自体は既存のものです。</p>
+      <p class="more">行列束法は Hua と Sarkar（1990）が提案したもので、FDTD法と信号予測の組み合わせも以前から研究されています。本研究では、それをこのアンテナに適用し、FDTD特有の過剰サンプリングへの対処として間引きを入れ、直接計算と比較して精度を検証しました。</p></div></details>
+    <details class="qa" id="q3"><summary>Q3　アレーが目的なのに、素子1個の話なのはなぜか</summary><div class="ans">
+      <p class="short">素子の設計がアレーの前提で、手法の検証も計算の軽い素子で行うためです。</p>
+      <p class="more">素子が28 / 39 GHzで動かなければアレーは組めません。また、正解となる12万ステップの直接計算が1回17時間で得られる素子で、先に手法を検証しました。</p></div></details>
+  </div>
+
+  <div class="qgroup">
+    <h3>手法について</h3>
+    <details class="qa" id="q4"><summary>Q4　ARMAとは何の略か</summary><div class="ans">
+      <p class="short">AutoRegressive Moving Average、自己回帰移動平均の略です。</p>
+      <p class="more">現在の値を、過去の値と入力の組み合わせで表すモデルです。本研究では、その分母の多項式の根である極を行列束法で求めています。</p></div></details>
+    <details class="qa" id="q5"><summary>Q5　なぜ「厳密に」減衰正弦波の和で表せるのか<span class="tag">頻出</span></summary><div class="ans">
+      <p class="short">FDTDの更新式が線形かつ時不変で、励振後は入力がゼロだからです。</p>
+      <p class="more">線形で時不変な差分方程式に入力がないとき、解は各モードが z<sub>k</sub><sup>n</sup> で時間発展する成分の重ね合わせになります。近似ではなく数学的に成り立ちます。</p></div></details>
+    <details class="qa" id="q6"><summary>Q6　極と留数とは何か</summary><div class="ans">
+      <p class="short">極は1ステップごとに信号にかかる複素数で、大きさが減衰、角度が周波数を表します。留数は各成分の振幅と初期位相です。</p></div></details>
+    <details class="qa" id="q7"><summary>Q7　なぜ行列束法を選んだのか。他の方法は</summary><div class="ans">
+      <p class="short">ノイズに強いからです。</p>
+      <p class="more">特異値分解でノイズ成分を切り捨ててから極を求めるので、偽の極が入りにくい。同じデータで単純な最小二乗法と比べると、予測誤差が 0.22 から 0.0082 へ約27倍改善しました。近い手法にProny法やESPRITがあります。</p></div></details>
+    <details class="qa" id="q8"><summary>Q8　モデルの次数などのパラメータはどう決めたか</summary><div class="ans">
+      <p class="short">自己検証の誤差が最も小さくなる組み合わせを探索して決めました。</p>
+      <p class="more">間引き率 50、次数 30、同定開始ステップ 3870 です。</p></div></details>
+    <details class="qa" id="q9"><summary>Q9　同定開始を3870ステップにした理由は</summary><div class="ans">
+      <p class="short">励振直後は給電部付近の速い過渡成分が残るので、それが落ち着いてから使うためです。</p>
+      <p class="more">励振終了（約770ステップ）の約5倍の位置です。値そのものはパラメータ探索で決めました。</p></div></details>
+    <details class="qa" id="q10"><summary>Q10　間引くと情報が失われないか</summary><div class="ans">
+      <p class="short">着目している帯域の情報は失われません。</p>
+      <p class="more">間引き後に扱える最高周波数（ナイキスト周波数）は 519 GHz で、見たい 45 GHz より十分高いです。また間引く前にローパスフィルタをかけて、高い周波数の成分が折り返して混ざるのを防いでいます。</p></div></details>
+    <details class="qa" id="q11"><summary>Q11　なぜ50ステップに1点なのか</summary><div class="ans">
+      <p class="short">1周期あたり約30点になるようにしました。</p>
+      <p class="more">間引きが少なすぎると極が密集したまま、多すぎるとナイキスト周波数が下がって高い成分が折り返します。パラメータ探索でも50が最良でした。</p></div></details>
+    <details class="qa" id="q12"><summary>Q12　電圧 V(t) は予測しなくていいのか</summary><div class="ans">
+      <p class="short">ハード源なので、パルス終了後の電圧は厳密に0です。</p>
+      <p class="more">電圧のスペクトルは約770ステップの有限和だけで正確に求まります。</p></div></details>
+    <details class="qa" id="q13"><summary>Q13　式(2)で何がうれしいのか</summary><div class="ans">
+      <p class="short">長い波形を作らず、好きな周波数で直接反射特性を計算できます。</p>
+      <p class="more">周波数の細かさに制限がありません。60万ステップ分を外挿してFFTする方法とも比べ、差は 0.011 dB で同じ結果になることを確認しています。</p></div></details>
+    <details class="qa" id="q14"><summary>Q14　図3の極（22.3 / 29.8 / 38.2 GHz）と共振周波数（28.1 / 38.9 GHz）が違うのはなぜか<span class="tag">重要</span></summary><div class="ans">
+      <p class="short">求めている極は「給電点を短絡したときの共振」で、反射の谷とは別物だからです。</p>
+      <p class="more">ハード源ではパルス終了後に給電点の電圧が0に固定される、つまり短絡状態になります。その状態での自由振動の周波数が極です。回路でいえば入力インピーダンスが0に近くなる周波数です。一方、反射の谷は入力インピーダンスが50 Ωに近づく周波数です。「Z ≈ 0」と「Z ≈ 50 Ω」は別の条件なので、別の周波数で起きます。<b>極の周波数をそのまま共振周波数と言わないよう注意</b>してください。</p>
+      <div class="analogy" style="margin:.6rem 0 0"><b>笛のたとえ</b>　同じ管でも、端を手でふさぐか開けておくかで鳴る音の高さが変わります。給電点を短絡した状態（ふさいだ）と、50 Ωの電源につないだ状態（実際の使い方）では、同じアンテナでも共振する周波数が違う、ということです。</div>
+      <p class="more" style="margin-top:.6rem">「それで問題ないのか」と続けて聞かれたら：<b>ARMA法は電流の予測に使っているだけで、反射特性は予測した電流と正確な電圧から後で計算しているので問題ありません。</b>直接計算と 0.134 dB で一致しているのがその証拠です。</p></div></details>
+    <details class="qa" id="q15"><summary>Q15　図3の灰色の極（100 GHz以上）は何か</summary><div class="ans">
+      <p class="short">着目帯域の外の成分を表すための、数学的な極です。</p>
+      <p class="more">物理的な共振としては解釈しません。25〜45 GHz の結果には影響していないことを、直接計算との一致で確認しています。</p></div></details>
+    <details class="qa" id="q35"><summary>Q35　式(1)の i[n] とは何か。なぜ等比級数になるのか</summary><div class="ans">
+      <p class="short">i[n] は n ステップ目の給電点電流です。減衰振動は1ステップごとに同じ複素数 z をかける等比数列なので、フーリエ変換の無限和が等比級数の公式で計算できます。</p>
+      <p class="more">公比は z e<sup>−jωΔt</sup> で、その大きさは |z| &lt; 1（減衰しているから）なので必ず収束します。</p></div></details>
+    <details class="qa" id="q16"><summary>Q16　ARMA法が使えないのはどんなときか</summary><div class="ans">
+      <p class="short">系が非線形のとき、励振が続くとき、応答が減衰しないときです。</p>
+      <p class="more">今回はこの3つの条件をすべて満たしています。また、共振が非常に鋭い（Q値が高い）と必要なステップ数が増えます。</p></div></details>
+  </div>
+
+  <div class="qgroup">
+    <h3>結果について</h3>
+    <details class="qa" id="q17"><summary>Q17　2万ステップよりもっと減らせないのか<span class="tag">頻出</span></summary><div class="ans">
+      <p class="short">約1.5万ステップが限界で、2万ステップが安全な値です。</p>
+      <p class="more">必要なステップ数は、周波数の近い2つの極を区別できるかで決まります。22.3 GHz と 29.8 GHz の差は 7.5 GHz で、そのうなりの周期は約7000ステップ。これを2周期分と、同定を始めるまでの時間が必要なので約1.5万です。実際に1.5万で試すと自己検証 0.056 と基準をわずかに超え、谷の深さが 0.7〜1 dB ずれました。1.2万以下では破綻しました。</p></div></details>
+    <details class="qa" id="q18"><summary>Q18　6倍の高速化の根拠は</summary><div class="ans">
+      <p class="short">ステップ数が12万から2万に減ったからです。</p>
+      <p class="more">1ステップの計算時間（約0.5秒）は変わりません。ARMA法の後処理は数十秒以内で、無視できます。</p></div></details>
+    <details class="qa" id="q19"><summary>Q19　直接計算の結果は本当に正しいのか</summary><div class="ans">
+      <p class="short">12万ステップで振動は十分減衰しており、基準として妥当と考えています。</p>
+      <p class="more">ただし直接計算の周波数の細かさは 0.433 GHz なので、それより小さい共振周波数の差は議論できません。</p></div></details>
+    <details class="qa" id="q20"><summary>Q20　RMS誤差 0.134 dB は十分なのか</summary><div class="ans">
+      <p class="short">共振周波数と帯域が完全に一致しているので、設計判断には十分です。</p>
+      <p class="more">谷の深さの差も 0.2 dB 以内です。そのままFFTすると誤差 2.80 dB で谷が 8.8 dB ずれるので、21倍改善しています。</p></div></details>
+    <details class="qa" id="q21"><summary>Q21　自己検証とは何か</summary><div class="ans">
+      <p class="short">データの後ろ1/3を隠して予測させ、答え合わせする方法です。</p>
+      <p class="more">直接計算なしで毎回信頼性を確認できます。0.05以下を合格の目安にしています。ただし良し悪しの判定用で、最終的な誤差の大きさを予測するものではありません。</p></div></details>
+    <details class="qa" id="q22"><summary>Q22　比帯域幅 13.9 %、9.9 % は十分か。目標は<span class="tag">重要</span></summary><div class="ans">
+      <p class="short">プロジェクトの目標は両帯域で15%以上なので、まだ届いていません。</p>
+      <p class="more">低域は目標に近いですが、高域は改善が必要です。先行研究の報告値とは解析手法（HFSSとFDTD）や寸法の違いもあるので、今後比較しながら改善していきます。<b>ここは正直に答える</b>のが一番です。「どう改善するのか」と続けて聞かれたら <a href="#q36">Q36</a> へ。</p></div></details>
+    <details class="qa" id="q23"><summary>Q23　HFSSの結果と比較したか</summary><div class="ans">
+      <p class="short">まだ比較していません。今後の課題です。</p></div></details>
+  </div>
+
+  <div class="qgroup">
+    <h3>設計について</h3>
+    <details class="qa" id="q24"><summary>Q24　引き継いだ設計の何が問題だったのか<span class="tag">頻出</span></summary><div class="ans">
+      <p class="short">Lプローブの位置の寸法が 4.1 mm で、素子間隔 7.0 mm の半分の 3.5 mm を超え、基板からはみ出していました。</p>
+      <p class="more">他のプローブ寸法（0.3 mm 前後）と比べて1桁大きいので、0.41 mm の誤記と判断して修正しました。</p></div></details>
+    <details class="qa" id="q25"><summary>Q25　寸法はどうやって決めたのか</summary><div class="ans">
+      <p class="short">共振周波数が 28 GHz と 39 GHz に合うように、各素子の長さを調整しました。</p>
+      <p class="more">素子は長いほど共振周波数が下がります。28 GHz用のL字形素子は b₁ を 2.25 → 2.45 mm と長く、39 GHz用のリングは b₂ を 2.04 → 1.92 mm と短くしました。</p></div></details>
+    <details class="qa" id="q26"><summary>Q26　ε<sub>r</sub> とは何か</summary><div class="ans">
+      <p class="short">比誘電率です。真空に比べて何倍電気を蓄えやすいかを表します。</p>
+      <p class="more">大きいほど基板中の波長が短くなり（1/√ε<sub>r</sub> 倍）アンテナを小さくできますが、帯域は狭くなります。2.6は比較的小さい値で、広帯域を狙った選択です。</p></div></details>
+  </div>
+
+  <div class="qgroup">
+    <h3>今後について</h3>
+    <details class="qa" id="q27"><summary>Q27　8×8アレーは今の方法で計算できるのか<span class="tag">頻出</span></summary><div class="ans">
+      <p class="short">今のセルサイズのままでは難しく、セルサイズの見直しが必要です。</p>
+      <p class="more">約 56 mm 角になるので、セル数は今の約30倍、メモリも数百GB必要です。今のセルは波長に対してかなり細かい（約390セル／波長、一般的な目安は20〜30）ので、粗くする余地があります。0.02 mm にすればセル数は1/8、ステップ数も1/2になります。</p></div></details>
+    <details class="qa" id="q36"><summary>Q36　比帯域幅を広げるにはどうするのか<span class="tag">頻出</span></summary><div class="ans">
+      <p class="short">まず高域を改善します。スミスチャートで見ると、低域は2つの共振がループを作って広帯域になっていますが、高域は共振が1つで、抵抗も高め（39 GHzで約60 Ω）です。</p>
+      <p class="more">リング内に伸びるLプローブの長さ p₂、プローブとリングのすき間 s₂、リングの幅 w₂ を調整し、インピーダンスを50 Ωに寄せてループを作ることを狙います。p₂ は再設計で 0.34 → 0.80 mm と大きく変えたので、最初に見直す候補です。基板を厚くするのが最も効きますが、1 mm という条件があります。</p></div></details>
+    <details class="qa" id="q28"><summary>Q28　アレーでもARMA法は使えるのか</summary><div class="ans">
+      <p class="short">使えると考えています。</p>
+      <p class="more">アレーでも線形で時不変なのは同じです。ただし素子どうしの結合で極の数が増える可能性があり、次数の見直しが必要になるかもしれません。</p></div></details>
+  </div>
+
+  <div class="qgroup">
+    <h3>基礎（聞かれたら答えられるように）</h3>
+    <details class="qa" id="q29"><summary>Q29　S11とは</summary><div class="ans"><p class="short">入力した電力のうち、反射して戻ってくる割合です。小さいほど良いです。</p></div></details>
+    <details class="qa" id="q30"><summary>Q30　−10 dB の意味は</summary><div class="ans"><p class="short">反射が10%、つまり90%の電力がアンテナに入るという意味です。</p></div></details>
+    <details class="qa" id="q31"><summary>Q31　クーラン条件とは</summary><div class="ans"><p class="short">FDTDの計算が発散しないための、時間刻みの上限です。</p><p class="more">1ステップの間に電磁波がセル1つ分より遠くへ進んではいけない、という条件です。</p></div></details>
+    <details class="qa" id="q32"><summary>Q32　Q値とは</summary><div class="ans"><p class="short">共振の鋭さです。高いほど長く鳴り続け、帯域は狭くなります。</p><p class="more">今回の主要な極の Q値は 7〜17 程度です。</p></div></details>
+    <details class="qa" id="q33"><summary>Q33　打ち切り誤差とは</summary><div class="ans"><p class="short">波形を途中で切ってフーリエ変換すると、切った跡が偽の波打ちとして周波数特性に現れることです。</p></div></details>
+    <details class="qa" id="q37"><summary>Q37　パッチアンテナとは</summary><div class="ans">
+      <p class="short">地導体板の上に誘電体基板を置き、その上に金属のパッチを貼った平面アンテナです。</p>
+      <p class="more">薄くて軽く、基板に金属を貼るだけで作れるので安価で、平面にたくさん並べやすい。そのためアレーアンテナの素子によく使われます。マイクロストリップアンテナ（MSA）とも呼びます。</p></div></details>
+    <details class="qa" id="q34"><summary>Q34　ハード源とは</summary><div class="ans"><p class="short">給電点の電界を直接指定する給電方法で、理想電圧源にあたります。</p><p class="more">パルスが終わると電圧は0に固定されます。</p></div></details>
+  </div>
+</section>
+
+<!-- ============================ 数字 ============================ -->
+<section id="numbers">
+  <h2>覚えておく数字</h2>
+  <p>質問では数字を聞かれることが多いので、これだけは即答できるようにしておきましょう。</p>
+  <div class="table-scroll"><table>
+    <thead><tr><th>項目</th><th>値</th><th>意味</th></tr></thead>
+    <tbody>
+      <tr><td>セル数</td><td class="v">約3.27億</td><td>1080 × 1080 × 280</td></tr>
+      <tr><td>セルサイズ</td><td class="v">0.01 mm</td><td>1辺の長さ</td></tr>
+      <tr><td>時間刻み Δt</td><td class="v">19.26 fs</td><td>クーラン条件で決まる</td></tr>
+      <tr><td>励振の終了</td><td class="v">約770ステップ</td><td>予稿では774</td></tr>
+      <tr><td>減衰の時定数</td><td class="v">約1.3万ステップ</td><td>約250 ps</td></tr>
+      <tr><td>1周期の点数</td><td class="v">2360 → 30</td><td>22 GHz、間引き前 → 後</td></tr>
+      <tr><td>パラメータ</td><td class="v">50 / 30 / 3870</td><td>間引き率 / 次数 / 同定開始</td></tr>
+      <tr><td>直接計算</td><td class="v">12万ステップ</td><td>約17時間</td></tr>
+      <tr><td>ARMA法</td><td class="v">2万ステップ</td><td>約2.8時間、6.0倍</td></tr>
+      <tr><td>共振周波数</td><td class="v">28.129 / 38.948 GHz</td><td>直接計算と一致</td></tr>
+      <tr><td>−10 dB 帯域</td><td class="v">25.97–29.86<br>37.22–41.11 GHz</td><td>直接計算と一致</td></tr>
+      <tr><td>比帯域幅</td><td class="v">13.9 % / 9.9 %</td><td>目標は15%以上</td></tr>
+      <tr><td>RMS誤差</td><td class="v">0.134 dB</td><td>最大 0.517 dB</td></tr>
+      <tr><td>自己検証</td><td class="v">0.0336</td><td>基準 0.05 以下</td></tr>
+      <tr><td>単純FFT</td><td class="v">2.80 dB</td><td>谷が 8.8 dB 浅い、21倍の差</td></tr>
+      <tr><td>主要な極</td><td class="v">22.3 / 29.8 / 38.2 GHz</td><td>短絡状態の共振。反射の谷とは別物</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ============================ 答え方 ============================ -->
+<section id="tips">
+  <h2>答え方のコツ</h2>
+  <ul class="tips">
+    <li><b>結論を一言、そのあと補足</b>「はい、〜です。というのは〜」の順で答える。長く話し始めると、途中で自分でも何を言っているか分からなくなります。</li>
+    <li><b>分からないことは分からないと言ってよい</b>「その点はまだ検討できていないので、今後確認します」で十分です。推測で答えて間違える方が印象は悪くなります。</li>
+    <li><b>極と共振周波数を混同しない</b>図3の 22.3 / 29.8 / 38.2 GHz は反射の谷ではありません。ここを取り違えると、手法の理解そのものを疑われます。</li>
+    <li><b>帯域の目標は正直に</b>15%に届いていないことを聞かれたら、ごまかさずに「未達なので今後改善します」と答えるのが一番です。</li>
+    <li><b>質問が聞き取れなかったら聞き返す</b>「〜という意味でしょうか」と確認してから答えれば、ずれた答えを防げます。</li>
+  </ul>
+</section>
+
+</main>
+
+<footer class="wrap">原稿の時間はおよその目安です。声に出して一度通し、実際の時間を測って調整してください。</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('toggle');
+  var all=function(){return Array.prototype.slice.call(document.querySelectorAll('details'));};
+  btn.addEventListener('click',function(){
+    var d=all(), anyClosed=d.some(function(x){return !x.open;});
+    d.forEach(function(x){x.open=anyClosed;});
+    btn.textContent=anyClosed?'全部閉じる':'全部開く';
+  });
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href^="#q"]'); if(!a) return;
+    var t=document.querySelector(a.getAttribute('href')); if(t && t.tagName==='DETAILS'){t.open=true;}
+  });
+  window.addEventListener('beforeprint',function(){all().forEach(function(x){x.open=true;});});
+})();
+</script>
+</body>
+</html>
